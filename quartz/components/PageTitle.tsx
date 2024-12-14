@@ -23,10 +23,12 @@ PageTitle.css = `
 }
 
 .page-title-img {
-  width: 50px;
-  height: auto;
+  width: 150px;
+  height: 150px; 
   border-radius: 50%;
   object-fit: cover;
+  display: block;
+  margin: 0 auto;
 }
 `
 
