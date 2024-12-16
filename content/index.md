@@ -54,7 +54,7 @@ title: 안녕하세요! 고진혁입니다 👋
 - 주요 기여
 	- ㅇㅇ
 	- ㅇㅇ
-- 상세 내용: [[Project 2 - TIL Challenge Bot]]
+- 상세 내용: [[TIL Challenge Bot]]
 - 깃허브 링크 🔗: https://github.com/KJH0476/til-challenge-bot
 #### 3️⃣ [팀] Project 3: AWS를 활용한 글로벌 식당 예약 서비스
 - 기간: 2024.10.28 ~ 2024.12.02 (5주)
