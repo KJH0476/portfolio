@@ -42,25 +42,23 @@ title: 안녕하세요! 고진혁입니다 👋
 
 ---
 ### 🎯 프로젝트
-#### 1️⃣ [Project 1: Spring Boot를 활용한 Discord 클론]
+#### 1️⃣ [개인] Project 1: Spring Boot를 활용한 Discord 클론
 - 기간: 2024.01 ~ 2024.03
-- 역할: 
 - 주요 기여
 	- ㅇㅇ
 	- ㅇㅇ
 - 상세 내용: [[Project 1]]
 - 깃허브 링크 🔗: https://github.com/KJH0476/KoreaTechSpringBE
-#### 2️⃣ [Project 2: TIL Challenge 봇]
+#### 2️⃣ [개인] Project 2: TIL Challenge 봇
 - 기간: 2024.07.26 ~ 2024.08.09 (2주)
-- 역할: 
 - 주요 기여
 	- ㅇㅇ
 	- ㅇㅇ
-- 상세 내용: [[Project 2]]
+- 상세 내용: [[Project 2 - TIL Challenge Bot]]
 - 깃허브 링크 🔗: https://github.com/KJH0476/til-challenge-bot
-#### 3️⃣ [Project 3: AWS를 활용한 글로벌 식당 예약 서비스]
+#### 3️⃣ [팀] Project 3: AWS를 활용한 글로벌 식당 예약 서비스
 - 기간: 2024.10.28 ~ 2024.12.02 (5주)
-- 역할: 
+- 역할: `클라우드 인프라 설계 및 구축`, `백엔드 개발`
 - 주요 기여
 	- ㅇㅇ
 	- ㅇㅇ
