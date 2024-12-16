@@ -1,11 +1,3 @@
-## 목차
-- [프로젝트 개요](#프로젝트-개요)
-- [주요 기능](#주요-기능)
-- [기술 스택 및 아키텍처](#기술-스택-및-아키텍처)
-- [문제 해결 경험](#문제-해결-경험)
-- [결과 및 성과](#결과-및-성과)
-- [🔗 Link](#-Link)
----
 ## 프로젝트 개요
 
 > 💡 **TIL 챌린지란?**</br>
@@ -47,13 +39,13 @@
 
 ## 기술 스택 및 아키텍처
 
-- **사용 기술**
-	 <img src="https://img.shields.io/badge/python-3776AB?style=&logo=python&logoColor=white"> <img src="https://img.shields.io/badge/slack api-4A154B?style=&logo=slack&logoColor=white"> <img src="https://img.shields.io/badge/aws-232F3E?style=&logo=amazonwebservices&logoColor=white"> <img src="https://img.shields.io/badge/aws lambda-FF9900?style=&logo=awslambda&logoColor=white"> <img src="https://img.shields.io/badge/aws s3-569A31?style=&logo=amazons3&logoColor=white"> <img src="https://img.shields.io/badge/aws sqs-FF4F8B?style=&logo=amazonsqs&logoColor=white"> <img src="https://img.shields.io/badge/react-61DAFB?style=&logo=react&logoColor=white">
+- **기술 스택**
+	- <img src="https://img.shields.io/badge/python-3776AB?style=&logo=python&logoColor=white"> <img src="https://img.shields.io/badge/slack api-4A154B?style=&logo=slack&logoColor=white"> <img src="https://img.shields.io/badge/aws-232F3E?style=&logo=amazonwebservices&logoColor=white"> <img src="https://img.shields.io/badge/aws lambda-FF9900?style=&logo=awslambda&logoColor=white"> <img src="https://img.shields.io/badge/aws s3-569A31?style=&logo=amazons3&logoColor=white"> <img src="https://img.shields.io/badge/aws sqs-FF4F8B?style=&logo=amazonsqs&logoColor=white"> <img src="https://img.shields.io/badge/react-61DAFB?style=&logo=react&logoColor=white">
 - **아키텍처**
 	![[til-architecture.png]]
-	 - **서버리스 아키텍처(AWS Lambda) 선택 이유**: 빠른 배포, 관리 부담 감소, 사용량 기반 과금
-	 - **S3 사용 이유**: 소규모 JSON 데이터 관리에 적합, 단순 구조 유지
-	 - **SQS 도입**: FIFO 큐로 요청 직렬 처리 → 동시성 문제 해결, 데이터 무결성 보장  
+	- **서버리스 아키텍처(AWS Lambda) 선택 이유**: 빠른 배포, 관리 부담 감소, 사용량 기반 과금
+	- **S3 사용 이유**: 소규모 JSON 데이터 관리에 적합, 단순 구조 유지
+	- **SQS 도입**: FIFO 큐로 요청 직렬 처리 → 동시성 문제 해결, 데이터 무결성 보장  
 
 ## 문제 해결 경험
 ### 문제 1 - S3 동시성 문제
