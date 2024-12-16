@@ -21,19 +21,19 @@
 
 1. **TIL 챌린지 자동 게시 및 알림**  
    - 매주 월요일 `TIL N월 N주차` 메시지를 Slack 채널에 자동으로 게시  
-	![[img2.png]]
+	<p align="center"><img src="../img/img2.png" width="800"></p>
    - 멤버가 블로그 URL을 첨부한 답글을 달면 전체 채널에 알림 메시지 발송 (핵심 자동화 기능 구현)
-	![[img1.png]]
+	<p align="center"><img src="../img/img1.png" width="800"></p>
 2. **좋아요(👍) 집계 자동화**  
    - TIL 챌린지 게시글의 답글에 달린 👍 이 추가/삭제될 때마다 해당 멤버의 좋아요 수를 실시간 집계
    - 좋아요 반영 시 Velog, Github, Naver 블로그 링크 여부 체크를 통해 실제 참여여부를 정확히 관리
 3. **월별 챌린저 선정 자동화**  
    - 매월 첫 번째 월요일에 지난달 전 주차에 참여한 멤버 및 그 중 최고 좋아요 획득자를 자동 선정 및 발표
-	![[img3.png]]
+	<p align="center"><img src="../img/img3.png" width="800"></p>
 4. **시각화 대시보드 제공**  
    - S3에 저장된 JSON 데이터를 React 기반 정적 웹으로 시각화
    - 주차별 참여 인원 및 좋아요 수를 한눈에 확인 가능
-	![[page.gif]]
+	<p align="center"><img src="../img/page.gif" width="800"></p>
 5. **Slack 개인 DM 알림**  
    - 좋아요 변동 시 본인 DM으로 상태 메시지 전송
    - 에러 발생 시 에러 알림 메시지 전송
@@ -43,7 +43,7 @@
 - **사용 기술**
 	 <img src="https://img.shields.io/badge/python-3776AB?style=&logo=python&logoColor=white"> <img src="https://img.shields.io/badge/slack api-4A154B?style=&logo=slack&logoColor=white"> <img src="https://img.shields.io/badge/aws-232F3E?style=&logo=amazonwebservices&logoColor=white"> <img src="https://img.shields.io/badge/aws lambda-FF9900?style=&logo=awslambda&logoColor=white"> <img src="https://img.shields.io/badge/aws s3-569A31?style=&logo=amazons3&logoColor=white"> <img src="https://img.shields.io/badge/aws sqs-FF4F8B?style=&logo=amazonsqs&logoColor=white"> <img src="https://img.shields.io/badge/react-61DAFB?style=&logo=react&logoColor=white">
 - **아키텍처**
-	![[til-architecture.png]]
+	<p align="center"><img src="../img/til-architecture.png" width="800"></p>
 	 - **서버리스 아키텍처(AWS Lambda) 선택 이유**: 빠른 배포, 관리 부담 감소, 사용량 기반 과금
 	 - **S3 사용 이유**: 소규모 JSON 데이터 관리에 적합, 단순 구조 유지
 	 - **SQS 도입**: FIFO 큐로 요청 직렬 처리 → 동시성 문제 해결, 데이터 무결성 보장  
@@ -55,11 +55,11 @@
 
 >[!note] 개선 방법: SQS(FIFO) 도입
 이 문제를 해결하기 위해 **AWS SQS의 FIFO 큐**를 도입했습니다. 새로운 구조는 다음과 같습니다.
-![[img4.png]]
+> <p align="center"><img src="../img/img4.png" width="800"></p>
 이제 모든 요청은 먼저 SQS에 적재되며, FIFO 큐 특성상 메시지를 순서대로 하나씩 Lambda 함수에 전달합니다. 또한, SQS 트리거 설정 시 배치 처리 수를 1로 지정하여 Lambda가 오직 하나의 요청만 순차적으로 처리하도록 했습니다. 이로써 S3 접근 시 모든 이전 요청 처리가 완료된 상태를 보장하여, 동시에 발생할 수 있는 덮어쓰기 문제를 근본적으로 방지하고 S3 데이터의 무결성을 확보할 수 있었습니다.
 
 #### 문제 2 - Slack 이벤트 URL 검증(Challenge 요청) 문제
-![[img5.png]]
+<p align="center"><img src="../img/img5.png" width="800"></p>
 Slack 이벤트를 구독하려면 Slack에서 제공하는 Challenge 요청에 응답해야 합니다. 이때 Slack은 `challenge`라는 키를 포함한 값을 보내며, 서버는 해당 `challenge` 값을 그대로 반환해야 이벤트 구독을 인정받습니다.
 하지만 기존 구조(`API Gateway → SQS → Lambda`)에서는 Slack이 원하는 즉각적인 응답을 제공하기 어려웠습니다. Slack이 `challenge` 요청을 보내면, API Gateway는 이를 SQS에 전달하고, SQS는 메시지 큐에 성공적으로 저장했다는 응답을 API Gateway로 보내는 식으로 비동기로 동작하기 때문입니다.
 그 결과 Slack에게는 `challenge` 값 대신 SQS 처리 성공 정보가 먼저 반환되어버리고, Slack은 URL 검증에 실패하게 됩니다. Lambda가 나중에 `challenge` 값을 보내도 이미 검증 요청은 끝난 상태입니다.
@@ -67,11 +67,11 @@ Slack 이벤트를 구독하려면 Slack에서 제공하는 Challenge 요청에 
 > [!note] 개선 방법: Challenge 처리 전용 Lambda 추가
 이 문제를 해결하기 위해 Challenge 요청에 대해서만 즉시 응답 가능한 구조를 도입했습니다. SQS로 보내기 전 **Challenge 요청 전용 Lambda 함수를 추가**하여, 이 Lambda에서 Slack의 `challenge` 값을 즉시 반환하도록 했습니다. 이렇게 하면 Slack이 바로 원하는 응답을 얻을 수 있어 이벤트 구독이 정상적으로 완료됩니다.
 이후 일반 이벤트 요청은 기존대로 SQS를 통해 비동기적으로 처리하면 됩니다. 이를 통해 Slack 이벤트 URL 검증에 실패하는 문제를 해결했습니다.
-![[img6.png]]
+> <p align="center"><img src="../img/img6.png" width="800"></p>
 
 #### 문제 3 - Slack 이벤트 중복 요청 문제
 Slack은 이벤트에 대한 응답을 3초 안에 받지 못하면 같은 이벤트를 다시 전송하는 메커니즘을 갖추고 있습니다. 이로 인해 가끔 동일한 이벤트가 두 번 도착하는 상황이 발생했습니다. 예를 들어, TIL 챌린지 답글 작성 이벤트를 한 번만 보냈는데도, Slack이 응답이 느리다고 판단해 같은 이벤트를 재전송해버리면 데이터가 이중으로 반영되는 문제가 생길 수 있습니다.
-![[img7.png]]
+<p align="center"><img src="../img/img7.png" width="800"></p>
 
 > [!note] 개선 방법: 데이터 중복 처리 예외 강화
 이 문제를 해결하기 위해 이벤트를 식별할 수 있는 고유한 값(예: 타임스탬프 `ts`)을 사용해 이미 처리한 이벤트인지 확인하는 로직을 추가했습니다. 
