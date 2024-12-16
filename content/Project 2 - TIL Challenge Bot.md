@@ -24,7 +24,7 @@
 	<p align="center"><img src="../img/img2.png" width="800"></p>
    - 멤버가 블로그 URL을 첨부한 답글을 달면 전체 채널에 알림 메시지 발송 (핵심 자동화 기능 구현)
 	<p align="center"><img src="../img/img1.png" width="800"></p>
-	![ddd][img/img1.png]
+	![ddd](/img/img1.png)
 1. **좋아요(👍) 집계 자동화**  
    - TIL 챌린지 게시글의 답글에 달린 👍 이 추가/삭제될 때마다 해당 멤버의 좋아요 수를 실시간 집계
    - 좋아요 반영 시 Velog, Github, Naver 블로그 링크 여부 체크를 통해 실제 참여여부를 정확히 관리
