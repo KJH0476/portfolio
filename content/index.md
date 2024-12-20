@@ -1,7 +1,51 @@
 ---
 title: 안녕하세요! 고진혁입니다 👋
 ---
-안녕하세요, 클라우드 인프라 환경 구축과 자동화에 관심이 많은 신입 클라우드 엔지니어 지망생입니다. 학습 과정에서 AWS, Docker, Terraform 등을 활용하여 개인 프로젝트를 진행하며 안정적이고 확장 가능한 환경을 직접 경험해보았습니다. Kubernetes를 통한 컨테이너 오케스트레이션과 CI/CD 파이프라인 구성에도 관심을 갖고 있으며, 새로운 기술에 빠르게 적응하고 성장하기 위해 꾸준히 노력하고 있습니다. 앞으로 클라우드 기술을 활용한 효율적인 인프라 구축과 운영에 기여하고 싶습니다. - 수정 필요
+안녕하세요, **클라우드 인프라 구축과 백엔드 개발**에 관심이 많은 고진혁입니다. 학습 과정에서 AWS, Docker, Spring Boot 등을 활용하여 개인 프로젝트와 팀 프로젝트를 진행하며 안정적이고 확장 가능한 환경을 직접 경험해보았습니다. 현재는 Kubernetes를 통한 컨테이너 오케스트레이션과 Kafka에도 관심을 갖고 있으며, 새로운 기술에 빠르게 적응하고 성장하기 위해 꾸준히 노력하고 있습니다. 앞으로 클라우드 기술을 활용한 효율적인 인프라 구축과 운영에 기여하고 싶습니다.
+
+---
+### 보유 스킬
+
+- Java
+- Spring Boot
+- PostgreSQL
+- AWS
+- Docker
+- Linux
+- Jira
+- Github
+
+---
+### 프로젝트
+
+#### [팀] AWS를 활용한 글로벌 식당 예약 서비스
+
+**흑백요리사**라는 프로그램이 큰 인기를 끌면서 출연 셰프들의 식당 예약 수요가 급증해 여러 예약 서비스에 트래픽이 몰린다는 이슈를 접했습니다. 이를 계기로, **유연하고 확장성 있는 서비스**를 클라우드 환경에서 제공하면 사용자 경험을 개선할 수 있겠다고 생각했습니다. 이에 **클라우드 기술을 활용해 트래픽 증가에도 안정적으로 식당 예약 서비스를 운영할 수 있는 시스템**을 구축해보고자 해당 프로젝트를 시작했습니다.
+
+- 기간: 2024.10.28 ~ 2024.12.02 (5주)
+- 담당
+	- Microservice Architecture 설계
+	- 데이터베이스 설계 및 구축
+	- AWS ECS 활용한 서비스 배포
+	- CloudFront Functions를 활용한 사용자 위치 기반 원본 리다이렉션
+- 상세 내용 🔗: [[AWS를 활용한 글로벌 식당 예약 서비스]]
+- 깃허브 🔗: https://github.com/KJH0476/Kyobo-CDA1-9900
+
+#### [개인] TIL Challenge 봇
+
+교보 CDA 1기 과정에서는 **TIL 챌린지**를 통해 서로의 학습 내용을 공유하는 활동을 진행했습니다. 참가자들은 개인 블로그에 공부한 내용을 작성하고, 이를 Slack에 올려 다른 멤버들과 공유했습니다. 하지만 새로운 답글이 게시되어도 챌린지에 참여하지 않은 멤버들에겐 알림이 가지 않아 챌린지에 참여하지 않은 멤버들은 새로운 학습 내용이 게시된 사실을 알 수 없었습니다. 이로 인해 **‘서로의 학습 내용을 공유한다’**는 챌린지의 본래 취지를 살리지 못한다고 판단하여, 본 프로젝트를 시작하게 되었습니다.
+
+- 기간: 2024.07.26 ~ 2024.08.09 (2주)
+- 상세 내용 🔗: [[TIL Challenge Bot]]
+- 깃허브 🔗: https://github.com/KJH0476/til-challenge-bot
+
+#### [개인] Project 3: Spring Boot를 활용한 Discord 클론
+- 기간: 2024.01 ~ 2024.03
+- 주요 기여
+	- ㅇㅇ
+	- ㅇㅇ
+- 상세 내용 🔗: [[Project 1]]
+- 깃허브 🔗: https://github.com/KJH0476/KoreaTechSpringBE
 
 ---
 ### 연락처
@@ -32,35 +76,3 @@ title: 안녕하세요! 고진혁입니다 👋
 | ![[졸업작품우수작품상.jpg\|200]]  | 수상명: 졸업작품 발표회 우수작품상<br><br>일자: 2024.05.29<br><br>기관: 한국기술교육대학교    |
 
 ---
-### 보유 스킬
-| 스킬                                                                                                                                                                                                                                                                                                              |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <img src="https://img.shields.io/badge/Java-953734?style=flat&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=Python&logoColor=white">                                                                                                                         |
-| <img src="https://img.shields.io/badge/Spring%20Boot-6DB33F?style=flat&logo=Spring%20Boot&logoColor=white"> <img src="https://img.shields.io/badge/PostgreSQL-336791?style=flat&logo=PostgreSQL&logoColor=white"> <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=MySQL&logoColor=white">   |
-| <img src="https://img.shields.io/badge/Amazon Web Services-232F3E?style=flat&logo=amazonwebservices&logoColor=white"> <img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white"> <img src="https://img.shields.io/badge/Linux-FCC624?style=flat&logo=Linux&logoColor=black"> |
-| <img src="https://img.shields.io/badge/Jira-0052CC?style=flat&logo=jira&logoColor=white"> <img src="https://img.shields.io/badge/Slack-4A154B?style=flat&logo=slack&logoColor=white">                                                                                                                           |
-
----
-### 프로젝트
-#### [개인] Project 1: Spring Boot를 활용한 Discord 클론
-- 기간: 2024.01 ~ 2024.03
-- 주요 기여
-	- ㅇㅇ
-	- ㅇㅇ
-- 상세 내용 🔗: [[Project 1]]
-- 깃허브 🔗: https://github.com/KJH0476/KoreaTechSpringBE
-#### [개인] Project 2: TIL Challenge 봇
-- 기간: 2024.07.26 ~ 2024.08.09 (2주)
-- 주요 기여
-	- ㅇㅇ
-	- ㅇㅇ
-- 상세 내용 🔗: [[TIL Challenge Bot]]
-- 깃허브 🔗: https://github.com/KJH0476/til-challenge-bot
-#### [팀] Project 3: AWS를 활용한 글로벌 식당 예약 서비스
-- 기간: 2024.10.28 ~ 2024.12.02 (5주)
-- 역할: `클라우드 인프라 설계 및 구축`, `백엔드 개발`
-- 주요 기여
-	- ㅇㅇ
-	- ㅇㅇ
-- 상세 내용 🔗: [[AWS를 활용한 글로벌 식당 예약 서비스]]
-- 깃허브 🔗: https://github.com/KJH0476/Kyobo-CDA1-9900

@@ -1,20 +1,21 @@
-## 프로젝트 개요
+## 프로젝트 소개
+
+이 프로젝트는 교보 CDA 1기 과정의 TIL 챌린지를 지원하기 위해 진행되었습니다. 매니저님들이 직접 수행하던 챌린지 글 게시, 좋아요 집계, 월별 주차별 참여 인원 선정 작업을 TIL 챌린지 봇을 통해 자동화하였으며, 주차별 참여 인원과 좋아요 수를 웹페이지에서 한눈에 볼 수 있도록 시각화했습니다.
 
 > 💡 **TIL 챌린지란?**</br>
 > 매주 `TIL N월 N주차`라는 메시지를 슬랙(Slack)에 게시하면, 멤버들은 해당 메시지에 답글로 자신이 작성한 블로그 글의 URL을 올립니다. 다른 사용자들은 해당 글을 읽고, 마음에 들면 좋아요(👍)를 눌러 서로의 학습 내용을 격려하고 공유합니다.
 
-**목적**
-- Slack 기반 **TIL 챌린지의 운영 과정을 자동화**하고, 참여 현황 및 성과를 명확히 파악할 수 있도록 하는 챗봇 및 대시보드 개발
+## 프로젝트 개요
 
-**배경**
+#### 배경
 - Slack 기반 TIL 챌린지에서는 새 답글이 등록될 때, 해당 글에 참여한 일부 멤버만 알림을 받고, 챌린지에 참여하지 않은 멤버들은 새로운 학습 내용이 게시된 사실을 알 수 없었습니다. 이로 인해 ‘서로의 학습 내용을 공유한다’는 챌린지의 본래 취지를 살리지 못한다고 판단하여, 본 프로젝트를 시작하게 되었습니다.
 - 기존에는 매니저님이 매주 수동으로 `TIL N월 N주차` 글을 올리고, 참여 현황과 좋아요(👍) 수를 직접 집계하는 등 비효율적인 관리 방식으로 진행되었습니다.
 
-**구현한 기능**
-- 매주 `TIL N월 N주차` 메시지를 자동 게시
-- 신규 참여 답글 발생 시 채널 전체 알림 발송
-- 좋아요(👍) 수 및 주차별 참여 통계 자동 집계 및 웹 대시보드 제공
-- 매월 챌린저(모든 주 참여 + 최고 좋아요 수) 자동 선정 및 결과 게시
+#### 목표
+- Slack 기반 **TIL 챌린지의 운영 과정을 자동화**하고, 참여 현황 및 성과를 명확히 파악할 수 있도록 하는 챗봇 및 대시보드를 제공하는 것을 목표로 합니다.
+
+#### 기술 스택
+-  <img src="https://img.shields.io/badge/python-3776AB?style=&logo=python&logoColor=white"> <img src="https://img.shields.io/badge/slack api-4A154B?style=&logo=slack&logoColor=white"> <img src="https://img.shields.io/badge/aws-232F3E?style=&logo=amazonwebservices&logoColor=white"> <img src="https://img.shields.io/badge/aws lambda-FF9900?style=&logo=awslambda&logoColor=white"> <img src="https://img.shields.io/badge/aws s3-569A31?style=&logo=amazons3&logoColor=white"> <img src="https://img.shields.io/badge/aws sqs-FF4F8B?style=&logo=amazonsqs&logoColor=white"> <img src="https://img.shields.io/badge/react-61DAFB?style=&logo=react&logoColor=white">
 
 ## 주요 기능
 
@@ -37,15 +38,16 @@
    - 좋아요 변동 시 본인 DM으로 상태 메시지 전송
    - 에러 발생 시 에러 알림 메시지 전송
 
-## 기술 스택 및 아키텍처
+## 시스템 구성
 
-- **기술 스택**
-	- <img src="https://img.shields.io/badge/python-3776AB?style=&logo=python&logoColor=white"> <img src="https://img.shields.io/badge/slack api-4A154B?style=&logo=slack&logoColor=white"> <img src="https://img.shields.io/badge/aws-232F3E?style=&logo=amazonwebservices&logoColor=white"> <img src="https://img.shields.io/badge/aws lambda-FF9900?style=&logo=awslambda&logoColor=white"> <img src="https://img.shields.io/badge/aws s3-569A31?style=&logo=amazons3&logoColor=white"> <img src="https://img.shields.io/badge/aws sqs-FF4F8B?style=&logo=amazonsqs&logoColor=white"> <img src="https://img.shields.io/badge/react-61DAFB?style=&logo=react&logoColor=white">
-- **아키텍처**
-	![[til-architecture.png]]
-	- **서버리스 아키텍처(AWS Lambda) 선택 이유**: 빠른 배포, 관리 부담 감소, 사용량 기반 과금
-	- **S3 사용 이유**: 소규모 JSON 데이터 관리에 적합, 단순 구조 유지
-	- **SQS 도입**: FIFO 큐로 요청 직렬 처리 → 동시성 문제 해결, 데이터 무결성 보장  
+![[til-architecture.png]]
+- **서버리스 아키텍처(AWS Lambda) 선택 이유**
+	- 빠른 배포, 관리 부담 감소, 사용량 기반 과금
+- **S3 사용 이유**
+	- 소규모 JSON 데이터 관리에 적합, 단순 구조 유지
+- **SQS 도입**
+	- FIFO 큐로 요청 직렬 처리 → 동시성 문제 해결, 데이터 무결성 보장
+=>> ==아키텍처 그림 아래 부분 수정 필요, 아키텍처에 대해 설명을 같이 하는 것이 좋을 듯==
 
 ## 문제 해결 경험
 ### 문제 1 - S3 동시성 문제
