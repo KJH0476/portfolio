@@ -5,18 +5,24 @@
 > 💡 **TIL 챌린지란?**</br>
 > 매주 `TIL N월 N주차`라는 메시지를 슬랙(Slack)에 게시하면, 멤버들은 해당 메시지에 답글로 자신이 작성한 블로그 글의 URL을 올립니다. 다른 사용자들은 해당 글을 읽고, 마음에 들면 좋아요(👍)를 눌러 서로의 학습 내용을 격려하고 공유합니다.
 
+---
 ## 프로젝트 개요
 
 #### 배경
+
 - Slack 기반 TIL 챌린지에서는 새 답글이 등록될 때, 해당 글에 참여한 일부 멤버만 알림을 받고, 챌린지에 참여하지 않은 멤버들은 새로운 학습 내용이 게시된 사실을 알 수 없었습니다. 이로 인해 ‘서로의 학습 내용을 공유한다’는 챌린지의 본래 취지를 살리지 못한다고 판단하여, 본 프로젝트를 시작하게 되었습니다.
 - 기존에는 매니저님이 매주 수동으로 `TIL N월 N주차` 글을 올리고, 참여 현황과 좋아요(👍) 수를 직접 집계하는 등 비효율적인 관리 방식으로 진행되었습니다.
 
 #### 목표
+
 - Slack 기반 **TIL 챌린지의 운영 과정을 자동화**하고, 참여 현황 및 성과를 명확히 파악할 수 있도록 하는 챗봇 및 대시보드를 제공하는 것을 목표로 합니다.
 
 #### 기술 스택
--  <img src="https://img.shields.io/badge/python-3776AB?style=&logo=python&logoColor=white"> <img src="https://img.shields.io/badge/slack api-4A154B?style=&logo=slack&logoColor=white"> <img src="https://img.shields.io/badge/aws-232F3E?style=&logo=amazonwebservices&logoColor=white"> <img src="https://img.shields.io/badge/aws lambda-FF9900?style=&logo=awslambda&logoColor=white"> <img src="https://img.shields.io/badge/aws s3-569A31?style=&logo=amazons3&logoColor=white"> <img src="https://img.shields.io/badge/aws sqs-FF4F8B?style=&logo=amazonsqs&logoColor=white"> <img src="https://img.shields.io/badge/react-61DAFB?style=&logo=react&logoColor=white">
 
+- Python, Slack API, React
+- Amazon Web Services
+
+---
 ## 주요 기능
 
 1. **TIL 챌린지 자동 게시 및 알림**  
@@ -38,6 +44,7 @@
    - 좋아요 변동 시 본인 DM으로 상태 메시지 전송
    - 에러 발생 시 에러 알림 메시지 전송
 
+---
 ## 시스템 구성
 
 ![[til-architecture.png]]
@@ -47,11 +54,11 @@
 	- 소규모 JSON 데이터 관리에 적합, 단순 구조 유지
 - **SQS 도입**
 	- FIFO 큐로 요청 직렬 처리 → 동시성 문제 해결, 데이터 무결성 보장
-=>> ==아키텍처 그림 아래 부분 수정 필요, 아키텍처에 대해 설명을 같이 하는 것이 좋을 듯==
 
+---
 ## 문제 해결 경험
 ### 문제 1 - S3 동시성 문제
-초기에는 `API Gateway → Lambda → S3` 구조로 요청을 처리했습니다. 또한, 챌린지 참여자 수가 10명 내외로 많지 않아 간단히 S3에 JSON 형태로 데이터를 저장하고 읽는 방식이었습니다. 그러나 S3에는 파일 잠금(파일 락) 기능이 없어, 여러 사용자가 동시에 데이터를 읽고 쓰는 상황에서 데이터 무결성이 깨질 수 있었습니다.
+초기에는 `API Gateway → Lambda → S3` 구조로 요청을 처리했습니다. 또한, 챌린지 참여자 수가 10명 내외로 많지 않아 간단히 S3에 JSON 형태로 데이터를 저장하고 읽는 방식이었습니다. 그러나 S3에는 파일 잠금(파일 락) 기능이 없어, 여러 사용자가 동시에 데이터를 읽고 쓰는 상황에서 데이터 무결성이 깨질 수 있었습니다.</br>
 예를 들어, A와 B가 동시에 챌린지에 참여하는 글을 남길 때, Lambda는 동일한 S3 JSON 파일을 불러와 각각의 참여 정보를 추가합니다. A가 먼저 S3에 데이터를 반영하고 저장한 직후, B도 이전 상태의 S3 데이터를 기반으로 다시 저장하려 하면 A의 변경 사항이 덮어쓰여져 데이터에 반영되지 않을 수 있습니다.
 
 >[!note] 개선 방법: SQS(FIFO) 도입
@@ -61,27 +68,16 @@
 
 ### 문제 2 - Slack 이벤트 URL 검증(Challenge 요청) 문제
 ![[img3.png]]
-Slack 이벤트를 구독하려면 Slack에서 제공하는 **Challenge 요청에 응답**해야 합니다. 이때 Slack은 `challenge`라는 키를 포함한 값을 보내며, 서버는 해당 `challenge` 값을 그대로 반환해야 이벤트 구독을 인정받습니다.
-하지만 기존 구조(`API Gateway → SQS → Lambda`)에서는 Slack이 원하는 즉각적인 응답을 제공하기 어려웠습니다. Slack이 `challenge` 요청을 보내면, API Gateway는 이를 SQS에 전달하고, SQS는 메시지 큐에 성공적으로 저장했다는 응답을 API Gateway로 보내는 식으로 비동기로 동작하기 때문입니다.
+Slack 이벤트를 구독하려면 Slack에서 제공하는 **Challenge 요청에 응답**해야 합니다. 이때 Slack은 `challenge`라는 키를 포함한 값을 보내며, 서버는 해당 `challenge` 값을 그대로 반환해야 이벤트 구독을 인정받습니다.</br>
+하지만 기존 구조(`API Gateway → SQS → Lambda`)에서는 Slack이 원하는 즉각적인 응답을 제공하기 어려웠습니다. Slack이 `challenge` 요청을 보내면, API Gateway는 이를 SQS에 전달하고, SQS는 메시지 큐에 성공적으로 저장했다는 응답을 API Gateway로 보내는 식으로 비동기로 동작하기 때문입니다.</br>
 그 결과 Slack에게는 `challenge` 값 대신 SQS 처리 성공 정보가 먼저 반환되어버리고, Slack은 URL 검증에 실패하게 됩니다. Lambda가 나중에 `challenge` 값을 보내도 이미 검증 요청은 끝난 상태입니다.
 
 > [!note] 개선 방법: Challenge 처리 전용 Lambda 추가
-> 이 문제를 해결하기 위해 Challenge 요청에 대해서만 즉시 응답 가능한 구조를 도입했습니다. SQS로 보내기 전 **Challenge 요청 전용 Lambda 함수를 추가**하여, 이 Lambda에서 Slack의 `challenge` 값을 즉시 반환하도록 했습니다. 이렇게 하면 Slack이 바로 원하는 응답을 얻을 수 있어 이벤트 구독이 정상적으로 완료됩니다.
+> 이 문제를 해결하기 위해 Challenge 요청에 대해서만 즉시 응답 가능한 구조를 도입했습니다. SQS로 보내기 전 **Challenge 요청 전용 Lambda 함수를 추가**하여, 이 Lambda에서 Slack의 `challenge` 값을 즉시 반환하도록 했습니다. 이렇게 하면 Slack이 바로 원하는 응답을 얻을 수 있어 이벤트 구독이 정상적으로 완료됩니다.</br>
 > 이후 일반 이벤트 요청은 기존대로 SQS를 통해 비동기적으로 처리하면 됩니다. 이를 통해 Slack 이벤트 URL 검증에 실패하는 문제를 해결했습니다.
 > ![[main-img5.png]]
 
-### 문제 3 - Slack 이벤트 중복 요청 문제
-Slack은 이벤트에 대한 응답을 3초 안에 받지 못하면 같은 이벤트를 다시 전송하는 메커니즘을 갖추고 있습니다. 이로 인해 가끔 동일한 이벤트가 두 번 도착하는 상황이 발생했습니다. 예를 들어, TIL 챌린지 답글 작성 이벤트를 한 번만 보냈는데도, Slack이 응답이 느리다고 판단해 같은 이벤트를 재전송해버리면 데이터가 이중으로 반영되는 문제가 생길 수 있습니다.
-![[img5.png]]
-
-> [!note] 개선 방법: 데이터 중복 처리 예외 강화
-> 이 문제를 해결하기 위해 이벤트를 식별할 수 있는 고유한 값(예: 타임스탬프 `ts`)을 사용해 이미 처리한 이벤트인지 확인하는 로직을 추가했습니다. 
-> ```
->- 이벤트 처리 전에 해당 `ts`값을 키로 하는 데이터가 존재하는지 확인  
->- 이미 존재한다면 중복 삽입을 막고, 없으면 새로 삽입
->```
-> 이러한 예외 처리를 통해 같은 이벤트가 두 번 오더라도 데이터 중복 반영을 방지할 수 있었습니다. 또한 SQS를 도입한 후에는 요청 응답 속도가 개선되면서 Slack이 재전송하는 빈도 자체도 줄어들어, 중복 이벤트 문제 발생 가능성이 더욱 낮아졌습니다.
-
+---
 ## 결과 및 성과
 
 - **TIL 챌린지 진행 프로세스 완전 자동화**
