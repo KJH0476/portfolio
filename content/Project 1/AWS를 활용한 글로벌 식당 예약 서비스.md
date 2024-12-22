@@ -28,12 +28,12 @@
 	- **알림 서비스(Notification Service):** 에약 서비스와 REST API 통신하여 예약 생성/취소 시 사용자에게 AWS SES(Simple Email Service)를 사용해 이메일 알림 전송
 	- **예약 서비스(Reservation Service):** 예약 생성, 예약 취소, 예약 대기 등록, 예약 정보 조회, 식당별 예약 가능 시간대 조회 API 제공
 	- **검색 서비스(Search Service):** AWS OpenSearch(ElasticSearch 엔진)를 활용해 식당명, 음식유형(한식, 양식 등), 주소 기반 고급 검색 API 제공
-- **서비스별 최적화된 데이터베이스 설계 및 구축**
-	- 각 마이크로서비스의 읽기/쓰기 작업량에 최적화된 데이터베이스를 선택하고 설계하여 시스템의 성능과 확장성을 극대화
-- **AWS ECS를 활용한 서비스 배포 및 인프라 구축**
-	- AWS Elastic Container Service(ECS)를 이용하여 마이크로서비스를 효율적으로 배포하고 관리함으로써 높은 가용성과 확장성을 확보
-- **CloudFront Functions를 활용한 사용자 위치 기반 원본 리다이렉션**
-	- CloudFront Functions를 활용하여 사용자 위치에 따라 최적의 원본 서버로 트래픽을 리다이렉션함으로써 응답 속도를 향상시키고 사용자 경험을 개선
+- **AWS ECS를 사용해 서비스를 컨테이너 환경에 배포하고 서비스 실행에 필요한 환경변수와 이미지를Parameter Store와 ECR(Elastic Container Registry)을 활용해 관리**
+- **AWS 각 인스턴스 별 필요한 보안그룹과 IAM Role 설정**
+	- [[보안그룹 및 IAM 설정|보안그룹 및 IAM 설정 문서]]
+- **각 마이크로서비스별 읽기/쓰기 작업량에 최적화된 데이터베이스 설계
+- **VPC 내 Public Subent에 Bastion Host(EC2) 생성하여 SSH 터널링을 통해 Private Subnet에 있는 데이터베이스에 접근할 수 있도록 설정**
+- **멀티 리전 환경에서 CloudFront Functions로 사용자 위치 기반 원본 서버 리다이렉션을 구현하여 응답 속도와 사용자 경험 개선**
 
 ---
 ## 아키텍처

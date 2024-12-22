@@ -21,9 +21,11 @@ Java, Python, Spring Boot, PostgreSQL, AWS, Docker, Linux, Jira, Github</br>
 - 기간: 2024.10.28 ~ 2024.12.02 (5주)
 - 주요 기여 내용
 	- **Microservice Architecture 설계 및 Spring Boot로 서비스 개발**
-	- **서비스별 최적화된 데이터베이스 설계 및 구축**
-	- **AWS ECS를 활용한 서비스 배포**
-	- **CloudFront Functions를 활용한 사용자 위치 기반 원본 리다이렉션**
+	- **AWS ECS를 사용해 서비스를 컨테이너 환경에 배포하고 서비스 실행에 필요한 환경변수와 이미지를Parameter Store와 ECR(Elastic Container Registry)을 활용해 관리**
+	- **AWS 각 인스턴스 별 필요한 보안그룹과 IAM Role 설정**
+	- **각 마이크로서비스별 읽기/쓰기 작업량에 최적화된 데이터베이스 설계
+	- **VPC 내 Public Subent에 Bastion Host(EC2) 생성하여 SSH 터널링을 통해 Private Subnet에 있는 데이터베이스에 접근할 수 있도록 설정**
+	- **멀티 리전 환경에서 CloudFront Functions로 사용자 위치 기반 원본 서버 리다이렉션을 구현하여 응답 속도와 사용자 경험 개선**
 - 기술스택
 	- 프론트엔드: React, JS, HTML, CSS
 	- 백엔드: Spring Boot, Python, PostreSQL, Docker
@@ -74,12 +76,6 @@ Java, Python, Spring Boot, PostgreSQL, AWS, Docker, Linux, Jira, Github</br>
 - 수상: 졸업작품 발표회 우수작품상
 - 상세 내용 🔗: [[Hand Tracking과 대화형 AI를 이용한 VR 실감형 수화 교육]]
 - 깃허브 🔗: https://github.com/KJH0476/hand-sign-language-communication-with-flask
-
-### [개인프로젝트] Spring Boot를 활용한 Discord 클론프로젝트
-
-- 기간: 2024.01 ~ 2024.03
-- 상세 내용 🔗: [[Spring Boot를 활용한 Discord 클론]]
-- 깃허브 🔗: https://github.com/KJH0476/SpringDiscordClone
 
 ---
 ## 연락처
