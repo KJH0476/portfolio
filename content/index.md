@@ -23,7 +23,7 @@ Java, Python, Spring Boot, PostgreSQL, AWS, Docker, Linux, Jira, Github</br>
 	- **Microservice Architecture 설계 및 Spring Boot로 서비스 개발**
 	- **AWS ECS를 사용해 서비스를 컨테이너 환경에 배포하고 서비스 실행에 필요한 환경변수와 이미지를Parameter Store와 ECR(Elastic Container Registry)을 활용해 관리**
 	- **AWS 각 인스턴스 별 필요한 보안그룹과 IAM Role 설정**
-	- **각 마이크로서비스별 읽기/쓰기 작업량에 최적화된 데이터베이스 설계
+	- **각 마이크로서비스별 읽기/쓰기 작업량에 최적화된 데이터베이스 설계**
 	- **VPC 내 Public Subent에 Bastion Host(EC2) 생성하여 SSH 터널링을 통해 Private Subnet에 있는 데이터베이스에 접근할 수 있도록 설정**
 	- **멀티 리전 환경에서 CloudFront Functions로 사용자 위치 기반 원본 서버 리다이렉션을 구현하여 응답 속도와 사용자 경험 개선**
 - 기술스택
