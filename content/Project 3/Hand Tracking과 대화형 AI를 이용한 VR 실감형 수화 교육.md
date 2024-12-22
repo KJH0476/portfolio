@@ -106,10 +106,10 @@
 	- **잘못된 인식 방지**
 		- 사용자 동작이 히트박스 내에서만 인식되도록 제한하여 오인식을 방지합니다.
 
-##### 개선 전 Flow Chart
-![[before_flow_chart.png]]
-##### 개선 후 Flow Chart
-![[after_flow_chart.png]]
+| <center>비교 | <center>Flow Chart         |
+| ---------- | -------------------------- |
+| 개선 전       | ![[before_flow_chart.png]] |
+| 개선 후       | ![[after_flow_chart.png]]  |
 
 ---
 ## 결과
