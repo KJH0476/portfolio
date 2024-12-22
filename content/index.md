@@ -7,56 +7,75 @@ title: 안녕하세요! 고진혁입니다 👋
 ---
 ## 보유 스킬
 
-- Java
-- Python
-- Spring Boot
-- PostgreSQL
-- AWS
-- Docker
-- Linux
-- Jira
-- Github
+Java, Python, Spring Boot, PostgreSQL, AWS, Docker, Linux, Jira, Github</br>
 
 ---
 ## 프로젝트
 
-### [팀] AWS를 활용한 글로벌 식당 예약 서비스
+### [팀프로젝트] AWS를 활용한 글로벌 식당 예약 서비스
 
-**흑백요리사**라는 프로그램이 큰 인기를 끌면서 출연 셰프들의 식당 예약 수요가 급증해 여러 예약 서비스에 트래픽이 몰린다는 이슈를 접했습니다. 이를 계기로, **유연하고 확장성 있는 서비스**를 클라우드 환경에서 제공하면 사용자 경험을 개선할 수 있겠다고 생각했습니다. 이에 **클라우드 기술을 활용해 트래픽 증가에도 안정적으로 식당 예약 서비스를 운영할 수 있는 시스템**을 구축해보고자 해당 프로젝트를 시작했습니다.
+해당 프로젝트는 **교보 DTS-Cloud architecture DX Academy(CDA) 1기 최종 프로젝트**로, **AWS 클라우드 서비스**를 활용한 **글로벌 식당 예약 플랫폼 인프라 구축**에 중점을 두고 있습니다.</br>
+확장성과 안정성을 고려한 **Microservice Architecture(MSA)** 및 **ECS 기반 컨테이너 오케스트레이션**, **글로벌 CDN(CloudFront) 연동을 통한 사용자 경험 향상**, **성능 최적화 DB 선택**, **로그 및 에러 관리 자동화** 등을 통해 **트래픽 급증, 중복 예약 문제, 글로벌 확장성 요구**에 대응하고자 합니다.
 
 - 인원: 4명
 - 기간: 2024.10.28 ~ 2024.12.02 (5주)
-- 담당
-	- Microservice Architecture 설계
-	- 데이터베이스 설계 및 구축
-	- AWS ECS 활용한 서비스 배포
-	- CloudFront Functions를 활용한 사용자 위치 기반 원본 리다이렉션
+- 주요 기여 내용
+	- **Microservice Architecture 설계 및 Spring Boot로 서비스 개발**
+	- **서비스별 최적화된 데이터베이스 설계 및 구축**
+	- **AWS ECS를 활용한 서비스 배포**
+	- **CloudFront Functions를 활용한 사용자 위치 기반 원본 리다이렉션**
+- 기술스택
+	- 프론트엔드: React, JS, HTML, CSS
+	- 백엔드: Spring Boot, Python, PostreSQL, Docker
+	- 배포: AWS
+	- 로그수집 및 에러로깅: OpenSearch, Kibana, FluentBit
+	- 협업: Jira, Github, Slack, Figma
 - 수상: 교보CDA 프로젝트 경진대회 최우수상
 - 상세 내용 🔗: [[AWS를 활용한 글로벌 식당 예약 서비스]]
 - 깃허브 🔗: https://github.com/KJH0476/Kyobo-CDA1-9900
 
-### [개인] TIL Challenge 봇
+### [개인프로젝트] TIL Challenge 봇
 
 교보 CDA 1기 과정에서는 **TIL 챌린지**를 통해 서로의 학습 내용을 공유하는 활동을 진행했습니다. 참가자들은 개인 블로그에 공부한 내용을 작성하고, 이를 Slack에 올려 다른 멤버들과 공유했습니다. 하지만 새로운 답글이 게시되어도 챌린지에 참여하지 않은 멤버들에겐 알림이 가지 않아 챌린지에 참여하지 않은 멤버들은 새로운 학습 내용이 게시된 사실을 알 수 없었습니다. 이로 인해 ‘서로의 학습 내용을 공유한다’는 챌린지의 본래 취지를 살리지 못한다고 판단하여, 본 프로젝트를 시작하게 되었습니다.
 
+> 💡 **TIL 챌린지란?**</br>
+> 매주 `TIL N월 N주차`라는 메시지를 슬랙(Slack)에 게시하면, 멤버들은 해당 메시지에 답글로 자신이 작성한 블로그 글의 URL을 올립니다. 다른 사용자들은 해당 글을 읽고, 마음에 들면 좋아요(👍)를 눌러 서로의 학습 내용을 격려하고 공유합니다.
+
+- 인원: 1명
 - 기간: 2024.07.26 ~ 2024.08.09 (2주)
+- 주요 구현 내용
+	- **TIL 챌린지 메세지 및 참여 알림 메시지 게시 자동화**
+	- **좋아요(👍) 집계 자동화**
+	- **월별 챌린저 선정 자동화**
+	- **참여 현황 시각화 대시보드 제공**
+	- **운영을 위한 Slack 개인 DM 좋아요 및 에러 알림**
+- 기술스택
+	- Python, Slack API, AWS, React
 - 상세 내용 🔗: [[TIL Challenge Bot]]
 - 깃허브 🔗: https://github.com/KJH0476/til-challenge-bot
 
-### [팀] Hand Tracking과 대화형 AI를 이용한 VR 실감형 수화 교육
+### [팀프로젝트] Hand Tracking과 대화형 AI를 이용한 VR 실감형 수화 교육
 
 수화를 배우고자 하는 사람들이 시간과 장소에 구애받지 않고 학습할 수 있는 환경이 부족하다는 문제를 알게 되었습니다. 특히, 기존의 시청각 자료 중심 학습은 실제 의사소통 상황에서 활용도가 떨어진다는 한계가 있었습니다. 이에, **웹과 VR 환경을 활용해 실감 나는 수어 학습 환경을 만들고, 더 많은 사람들이 쉽게 접근할 수 있는 학습 도구를 제공하자**는 목표로 이 프로젝트를 시작하게 되었습니다.
 
 - 인원: 4명
 - 기간: 2024.03.02 ~ 2024.05.26 (3개월)
-- 담당
-	- 수어 인식 AI 모델 서빙
-	- 자모음 조합/분리 알고리즘 구현
+- 주요 기여 내용
+	- **수어 인식 AI 모델 서빙**
+	- **자모음 조합/분리 알고리즘 구현**
+	- **수어 동작 히트박스(가이드라인) 도입 의견 제시**
+- 기술스택
+	- 백엔드: Python, Flask
+	- 머신러닝: Scikit Learn
+	- 이미지 처리: OpenCV, MediaPipe
+	- 3D 가상인물: Unreal Engine
+	- API: ChatGPT API
+	- 협업: Notion, Kakao Talk
 - 수상: 졸업작품 발표회 우수작품상
 - 상세 내용 🔗: [[Hand Tracking과 대화형 AI를 이용한 VR 실감형 수화 교육]]
 - 깃허브 🔗: https://github.com/KJH0476/hand-sign-language-communication-with-flask
 
-### [개인] Spring Boot를 활용한 Discord 클론프로젝트
+### [개인프로젝트] Spring Boot를 활용한 Discord 클론프로젝트
 
 - 기간: 2024.01 ~ 2024.03
 - 상세 내용 🔗: [[Spring Boot를 활용한 Discord 클론]]
