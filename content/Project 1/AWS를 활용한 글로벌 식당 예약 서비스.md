@@ -28,11 +28,17 @@
 	- **알림 서비스(Notification Service):** 에약 서비스와 REST API 통신하여 예약 생성/취소 시 사용자에게 AWS SES(Simple Email Service)를 사용해 이메일 알림 전송
 	- **예약 서비스(Reservation Service):** 예약 생성, 예약 취소, 예약 대기 등록, 예약 정보 조회, 식당별 예약 가능 시간대 조회 API 제공
 	- **검색 서비스(Search Service):** AWS OpenSearch(ElasticSearch 엔진)를 활용해 식당명, 음식유형(한식, 양식 등), 주소 기반 고급 검색 API 제공
-- **AWS ECS를 사용해 서비스를 컨테이너 환경에 배포하고 서비스 실행에 필요한 환경변수와 이미지를Parameter Store와 ECR(Elastic Container Registry)을 활용해 관리**
+- **AWS ECS(Elastic Container Service)를 활용한 서비스 배포
+	- AWS ECS를 이용하여 마이크로서비스를 효율적으로 배포하고 관리함으로써 높은 가용성과 확장성을 확보
+	- 개발한 애플리케이션에서 필요로 하는 환경변수를 AWS Systems Manager Parameter Store로 관리하고, 컨테이너 이미지를 ECR(Elastic Container Registry)에 저장하여 ECS 배포 시 활용하도록 설정
 - **AWS 각 인스턴스 별 필요한 보안그룹과 IAM Role 설정**
-	- [[보안그룹 및 IAM 설정|보안그룹 및 IAM 설정 문서]]
-- **각 마이크로서비스별 읽기/쓰기 작업량에 최적화된 데이터베이스 설계
-- **VPC 내 Public Subent에 Bastion Host(EC2) 생성하여 SSH 터널링을 통해 Private Subnet에 있는 데이터베이스에 접근할 수 있도록 설정**
+	- [[보안그룹 및 IAM 설정]]
+- **각 마이크로서비스별 읽기/쓰기 작업량에 최적화된 데이터베이스 설계**
+	- 각 마이크로서비스의 읽기/쓰기 작업량에 최적화된 데이터베이스를 선택하고 설계하여 시스템의 성능과 확장성을 극대화
+	- OpenSearch가 영구 저장소로 단독 사용하기에 부적합하다고 판단하여 DynamoDB와 DynamoDB Streams, Lambda를 도입하는 방향으로 설계
+- **VPC 내 Public Subent에 Bastion Host(EC2) 생성하여 SSH 터널링을 통한 데이터베이스 관리**
+	- SSH 터널링을 통해 Private Subnet에 있는 데이터베이스에 안전하게 접근하도록 설정
+	- 관리자의 IP만 허용하는 보안 그룹 생성으로 보안 강화
 - **멀티 리전 환경에서 CloudFront Functions로 사용자 위치 기반 원본 서버 리다이렉션을 구현하여 응답 속도와 사용자 경험 개선**
 
 ---
