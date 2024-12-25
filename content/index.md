@@ -7,7 +7,7 @@ title: 안녕하세요! 고진혁입니다 👋
 ---
 ## 보유 스킬
 
-Java, Python, Spring Boot, PostgreSQL, AWS, Docker, Linux, Jira, Github</br>
+`Java`, `Python`, `Spring Boot`, `PostgreSQL`, `AWS`, `Docker`, `Linux`, `Jira`, `Github`</br>
 
 ---
 ## 프로젝트
