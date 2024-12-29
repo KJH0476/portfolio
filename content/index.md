@@ -52,9 +52,10 @@ title: 안녕하세요! 함께 성장하는 클라우드 엔지니어 고진혁�
 
 > **아키텍처**
 
-| **<center>단일리전**<br>![[architecture.png]]             |
-| ----------------------------------------------------- |
-| <center>**멀티 리전**<br>![[cloudfront_architecture.png]] |
+| <center>유형 | <center>아키텍처                     |
+| ---------- | -------------------------------- |
+| 단일 리전      | ![[architecture.png]]            |
+| 멀티 리전      | ![[cloudfront_architecture.png]] |
 
 > **결과**
 - 확장 가능하고 안정적인 서비스 구축
