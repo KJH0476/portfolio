@@ -27,24 +27,32 @@ title: 안녕하세요! 함께 성장하는 클라우드 엔지니어 고진혁�
 “흑백요리사” 프로그램의 인기로 예약 트래픽이 급증하는 문제를 접하며, 이를 계기로 **클라우드 기술을 활용해 유연하고 확장성 있는 예약 시스템을 구축**하고자 프로젝트를 시작했습니다.
 확장성과 안정성을 고려한 **Microservice Architecture(MSA)** 및 **ECS 기반 컨테이너 오케스트레이션**, **글로벌 CDN(CloudFront) 연동을 통한 사용자 경험 향상**, **성능 최적화 DB 선택**, **로그 및 에러 관리 자동화** 등을 통해 **트래픽 급증, 중복 예약 문제, 글로벌 확장성 요구**에 대응하고자 합니다.
 
-- 인원: 4명
-- 기간: 2024.10.28 ~ 2024.12.02 (5주)
-- 주요 기여 내용
-	- **Microservice Architecture 설계 및 Spring Boot로 서비스 개발 (1인 담당)**
-	- **AWS ECS를 사용해 서비스를 컨테이너 환경에 배포하고 서비스 실행에 필요한 환경변수와 이미지를Parameter Store와 ECR(Elastic Container Registry)을 활용해 관리**
-	- **AWS 각 인스턴스 별 필요한 보안그룹과 IAM Role 설정**
-	- **각 마이크로서비스별 읽기/쓰기 작업량에 최적화된 데이터베이스 설계**
-	- **VPC 내 Public Subent에 Bastion Host(EC2) 생성하여 SSH 터널링을 통해 Private Subnet에 있는 데이터베이스에 접근할 수 있도록 설정**
-	- **멀티 리전 환경에서 CloudFront Functions로 사용자 위치 기반 원본 서버 리다이렉션을 구현하여 응답 속도와 사용자 경험 개선**
-- 기술스택
-	- 프론트엔드: React, JS, HTML, CSS
-	- 백엔드: Spring Boot, Python, PostreSQL, Docker
-	- 배포: AWS
-	- 로그수집 및 에러로깅: OpenSearch, Kibana, FluentBit
-	- 협업: Jira, Github, Slack, Figma
-- 수상: 교보CDA 프로젝트 경진대회 최우수상
-- 상세 내용 🔗: [[AWS를 활용한 글로벌 식당 예약 서비스]]
-- 깃허브 🔗: https://github.com/KJH0476/Kyobo-CDA1-9900
+| <center>인원 | <center>기간                           | <center>수상                       | <center>깃허브                                                                                                                                                                   |
+| ---------- | ------------------------------------ | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <center>4명 | <center>2024.10.28 ~ 2024.12.02 (5주) | <center>교보CDA 1회차 프로젝트 경진대회 최우수상 | <a href="https://github.com/KJH0476/Kyobo-CDA1-9900" target="_blank"><img src="https://img.shields.io/badge/KyoboCDA19900-181717?style=flat&logo=github&logoColor=white"></a> |
+
+> **주요 기여 내용**
+- 전체 서비스 Microservice Architecture로 설계 (1인 담당)
+	- **==`주요 개선점`== CQRS 패턴 도입을 통한 검색/예약 서비스 결합도 감소 및 성능 개선**
+	- [[AWS를 활용한 글로벌 식당 예약 서비스#1. 쓰기-읽기 분리를 통한 마이크로서비스 아키텍처 개선 및 CQRS 적용|🔗 자세히 보기]]
+- 각 마이크로서비스 SpringBoot로 개발 및 서비스별 읽기/쓰기 작업량에 최적화된 데이터베이스 설계
+	- **==`주요 개선점`== DynamoDB와 Lambda Streams로 OpenSearch 실시간 동기화 구조 구현**
+	- [[AWS를 활용한 글로벌 식당 예약 서비스#2. AWS 기반 MSA 설계와 데이터베이스 최적화|🔗 자세히 보기]]
+- 멀티 리전 환경에서 CloudFront Functions로 사용자 위치 기반 원본 서버 리다이렉션을 구현하여 응답 속도와 사용자 경험 개선
+	- [[AWS를 활용한 글로벌 식당 예약 서비스#3. CloudFront Functions를 활용한 사용자 위치 기반 리다이렉션|🔗 자세히 보기]]
+- AWS ECS를 사용해 서비스를 컨테이너 환경에 배포하고 서비스 실행에 필요한 환경변수와 이미지를Parameter Store와 ECR(Elastic Container Registry)을 활용해 관리
+- AWS 각 인스턴스 별 필요한 보안그룹과 IAM Role 설정
+- VPC 내 Public Subent에 Bastion Host(EC2) 생성하여 SSH 터널링을 통해 Private Subnet에 있는 데이터베이스에 접근할 수 있도록 설정
+
+> **기술스택**
+- 프론트엔드: React, JS, HTML, CSS
+- 백엔드: Spring Boot, Python, PostreSQL, Docker
+- 배포: AWS
+- 로그수집 및 에러로깅: OpenSearch, Kibana, FluentBit
+- 협업: Jira, Github, Slack, Figma
+
+> **상세 페이지**
+- [[AWS를 활용한 글로벌 식당 예약 서비스]]
 
 ### [개인프로젝트] TIL Challenge 봇
 
