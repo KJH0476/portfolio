@@ -19,21 +19,6 @@ title: 안녕하세요! 함께 성장하는 클라우드 엔지니어 고진혁�
 | 클라우드 / 컨테이너 | `AWS`, `Docker`                |
 | 운영체제        | `Linux`, `MacOS`               |
 | 협업          | `Jira`, `Github`, `Slack`      |
-```chart
-type: bar
-labels: [Java, Python, SpringBoot, Flask, PostgreSQL, MySQL, Redis, AWS, Docker]
-series:
-  - title: Level
-    data: [3, 2, 3, 2, 3, 2, 1, 3, 3]
-tension: 0.5
-width: 89%
-labelColors: true
-fill: true
-beginAtZero: true
-bestFit: true
-bestFitTitle: undefined
-bestFitNumber: 0
-```
 
 ---
 ## 프로젝트
