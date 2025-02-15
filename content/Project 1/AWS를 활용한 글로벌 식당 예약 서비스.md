@@ -27,8 +27,8 @@
 ---
 ## 주요 기여 내용
 
-- **전체 서비스 Microservice Architecture로 설계 (1인 담당)
-- **AWS ECS(Elastic Container Service)를 활용한 서비스 배포
+- **전체 서비스 Microservice Architecture로 설계 (1인 담당)**
+- **AWS ECS(Elastic Container Service)를 활용한 서비스 배포**
 	- AWS ECS를 이용하여 마이크로서비스를 효율적으로 배포하고 관리함으로써 높은 가용성과 확장성을 확보
 	- 개발한 애플리케이션에서 필요로 하는 환경변수를 AWS Systems Manager Parameter Store로 관리하고, 컨테이너 이미지를 ECR(Elastic Container Registry)에 저장하여 ECS 배포 시 활용하도록 설정
 - **AWS 각 인스턴스 별 필요한 보안그룹과 IAM Role 설정**
